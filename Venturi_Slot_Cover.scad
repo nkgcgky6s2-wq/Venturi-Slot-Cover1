@@ -16,5 +16,5 @@ include <source/channel.scad>
 include <source/venturi.scad>
 include <source/vanes.scad>
 include <source/logo.scad>
-
+include <source/assembly.scad>
 Assembly();
