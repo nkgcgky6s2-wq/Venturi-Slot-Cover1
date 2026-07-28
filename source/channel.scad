@@ -106,3 +106,26 @@ ChannelInner();
 }
 
 }
+module AirDuct()
+{
+
+difference()
+{
+
+union()
+{
+
+ChannelOuter();
+
+}
+
+union()
+{
+
+ChannelInner();
+
+}
+
+}
+
+}
