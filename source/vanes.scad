@@ -4,23 +4,23 @@
 //
 ////////////////////////////////////////////////////
 
-VANE_LENGTH = 22;
-VANE_HEIGHT = 10;
-VANE_WIDTH  = 1.2;
+VANE_T = 1.2;
+VANE_L = 20;
+VANE_H = 9;
 
-module Vane(x)
+module OneVane(y)
 {
 
 translate([
-BracketWidth+74,
-x,
+60,
+y,
 5
 ])
 
 cube([
-VANE_LENGTH,
-VANE_WIDTH,
-VANE_HEIGHT
+VANE_L,
+VANE_T,
+VANE_H
 ]);
 
 }
@@ -28,12 +28,9 @@ VANE_HEIGHT
 module Vanes()
 {
 
-Vane(28);
-
-Vane(32);
-
-Vane(36);
-
-Vane(40);
+OneVane(24);
+OneVane(28);
+OneVane(32);
+OneVane(36);
 
 }
