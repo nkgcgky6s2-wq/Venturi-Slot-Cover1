@@ -17,6 +17,8 @@ Channel();
 if(MODE=="VENTURI")
 Venturi();
 
+Vanes();
+
 }
 
 }
