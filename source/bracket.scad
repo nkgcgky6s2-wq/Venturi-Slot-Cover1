@@ -1,14 +1,13 @@
 ////////////////////////////////////////////////////
 //
-// PCI BRACKET
+// bracket.scad
 //
 ////////////////////////////////////////////////////
 
-HOOK_WIDTH = 11.4;
-HOOK_HEIGHT = 8.0;
+HOOK_W = 11.3;
+HOOK_H = 8.0;
 
-RIB_WIDTH = 3.0;
-RIB_HEIGHT = 24;
+EAR_Y = 9;
 
 module Bracket()
 {
@@ -19,126 +18,90 @@ difference()
 union()
 {
 
-/////////////////////////////////////
-// Main Plate
-/////////////////////////////////////
+// Main plate
+translate([0,0,0])
+cube([BracketWidth,BracketHeight,BracketThickness]);
 
-RoundedBox(
-[
-BracketWidth,
-BracketHeight,
-BracketThickness
-],
-1.0);
-
-/////////////////////////////////////
-// Top Hook
-/////////////////////////////////////
-
+// Top hook
 translate([
-(BracketWidth-HOOK_WIDTH)/2,
-BracketHeight-HOOK_HEIGHT,
+(BracketWidth-HOOK_W)/2,
+BracketHeight-HOOK_H,
 0
 ])
-
 cube([
-HOOK_WIDTH,
-HOOK_HEIGHT,
+HOOK_W,
+HOOK_H,
 BracketThickness
 ]);
 
-/////////////////////////////////////
-// Lower Ear
-/////////////////////////////////////
-
+// Reinforced screw ear
 translate([
 BracketWidth/2,
-9,
+EAR_Y,
 0
 ])
-
 cylinder(
-d=EarDiameter,
-h=EarThickness);
+d=18,
+h=4.5);
 
-/////////////////////////////////////
 // Neck
-/////////////////////////////////////
-
 translate([
 0,
 0,
 0
 ])
-
 cube([
 BracketWidth,
 12,
-EarThickness
+4.5
 ]);
 
-/////////////////////////////////////
-// Left Rib
-/////////////////////////////////////
-
-translate([
-1,
-12,
-0
-])
-
-cube([
-RIB_WIDTH,
-RIB_HEIGHT,
-8
-]);
-
-/////////////////////////////////////
-// Right Rib
-/////////////////////////////////////
-
-translate([
-BracketWidth-RIB_WIDTH-1,
-12,
-0
-])
-
-cube([
-RIB_WIDTH,
-RIB_HEIGHT,
-8
-]);
-
-/////////////////////////////////////
-// Air Channel Mount
-/////////////////////////////////////
-
+// Channel support
 translate([
 BracketWidth-1,
 18,
 0
 ])
-
 cube([
-6,
-38,
+8,
+40,
 18
+]);
+
+// Left rib
+translate([
+1,
+14,
+0
+])
+cube([
+3,
+30,
+10
+]);
+
+// Right rib
+translate([
+BracketWidth-4,
+14,
+0
+])
+cube([
+3,
+30,
+10
 ]);
 
 }
 
-/////////////////////////////////////
-// Screw Hole
-/////////////////////////////////////
-
+// Screw hole
 translate([
 BracketWidth/2,
-9,
+EAR_Y,
 -1
 ])
-
 cylinder(
-d=HoleDiameter,
+d=4.2,
 h=20);
 
 }
