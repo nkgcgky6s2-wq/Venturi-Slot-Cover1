@@ -4,21 +4,39 @@
 //
 ////////////////////////////////////////////////////
 
+module AirIntake()
+{
+
+    union()
+    {
+
+        Channel();
+
+        if(MODE=="VENTURI")
+            Venturi();
+
+        Vanes();
+
+    }
+
+}
+
 module Assembly()
 {
 
-union()
-{
+    union()
+    {
 
-Bracket();
+        Bracket();
 
-Channel();
+        translate([
+            BracketWidth-2,
+            18,
+            0
+        ])
 
-if(MODE=="VENTURI")
-Venturi();
+        AirIntake();
 
-Vanes();
-
-}
+    }
 
 }
