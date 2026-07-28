@@ -10,7 +10,7 @@ module AirIntake()
     union()
     {
 
-        Channel();
+        AirDuct();
 
         if(MODE=="VENTURI")
             Venturi();
