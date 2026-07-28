@@ -6,13 +6,24 @@ include <vanes.scad>
 
 module Assembly()
 {
-    union()
-    {
-        Bracket();
-        translate([BracketWidth-1,18,0])
-            Duct();
-        Vanes();
-    }
+
+union()
+{
+
+Bracket();
+
+translate([
+BracketWidth-1,
+18,
+0
+])
+
+Duct();
+
+Vanes();
+
+}
+
 }
 
 Assembly();
