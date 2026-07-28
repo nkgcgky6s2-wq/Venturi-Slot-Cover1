@@ -1,1 +1,146 @@
+////////////////////////////////////////////////////
+//
+// PCI BRACKET
+//
+////////////////////////////////////////////////////
 
+HOOK_WIDTH = 11.4;
+HOOK_HEIGHT = 8.0;
+
+RIB_WIDTH = 3.0;
+RIB_HEIGHT = 24;
+
+module Bracket()
+{
+
+difference()
+{
+
+union()
+{
+
+/////////////////////////////////////
+// Main Plate
+/////////////////////////////////////
+
+RoundedBox(
+[
+BracketWidth,
+BracketHeight,
+BracketThickness
+],
+1.0);
+
+/////////////////////////////////////
+// Top Hook
+/////////////////////////////////////
+
+translate([
+(BracketWidth-HOOK_WIDTH)/2,
+BracketHeight-HOOK_HEIGHT,
+0
+])
+
+cube([
+HOOK_WIDTH,
+HOOK_HEIGHT,
+BracketThickness
+]);
+
+/////////////////////////////////////
+// Lower Ear
+/////////////////////////////////////
+
+translate([
+BracketWidth/2,
+9,
+0
+])
+
+cylinder(
+d=EarDiameter,
+h=EarThickness);
+
+/////////////////////////////////////
+// Neck
+/////////////////////////////////////
+
+translate([
+0,
+0,
+0
+])
+
+cube([
+BracketWidth,
+12,
+EarThickness
+]);
+
+/////////////////////////////////////
+// Left Rib
+/////////////////////////////////////
+
+translate([
+1,
+12,
+0
+])
+
+cube([
+RIB_WIDTH,
+RIB_HEIGHT,
+8
+]);
+
+/////////////////////////////////////
+// Right Rib
+/////////////////////////////////////
+
+translate([
+BracketWidth-RIB_WIDTH-1,
+12,
+0
+])
+
+cube([
+RIB_WIDTH,
+RIB_HEIGHT,
+8
+]);
+
+/////////////////////////////////////
+// Air Channel Mount
+/////////////////////////////////////
+
+translate([
+BracketWidth-1,
+18,
+0
+])
+
+cube([
+6,
+38,
+18
+]);
+
+}
+
+/////////////////////////////////////
+// Screw Hole
+/////////////////////////////////////
+
+translate([
+BracketWidth/2,
+9,
+-1
+])
+
+cylinder(
+d=HoleDiameter,
+h=20);
+
+}
+
+}
