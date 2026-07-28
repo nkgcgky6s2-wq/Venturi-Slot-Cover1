@@ -4,72 +4,55 @@
 //
 ////////////////////////////////////////////////////
 
+VENTURI_RATIO = 0.60;
+
+IN_W = INLET_W;
+IN_H = INLET_H;
+
+OUT_W = INLET_W * VENTURI_RATIO;
+OUT_H = INLET_H * VENTURI_RATIO;
+
+VENTURI_LEN = 26;
+
 module VenturiOuter()
 {
 
-hull()
-{
+    hull()
+    {
 
-translate([BracketWidth+70,33,3])
+        translate([DUCT_LEN-VENTURI_LEN,23,4])
+            OvalBox(IN_W,IN_H,10);
 
-scale([1.2,1,1])
+        translate([DUCT_LEN+VENTURI_LEN,23,4])
+            OvalBox(OUT_W,OUT_H,10);
 
-cylinder(
-d=10,
-h=10);
-
-translate([BracketWidth+96,34,5])
-
-scale([0.8,0.7,1])
-
-cylinder(
-d=8,
-h=8);
-
-}
+    }
 
 }
 
 module VenturiInner()
 {
 
-hull()
-{
+    hull()
+    {
 
-translate([BracketWidth+70,33,5])
+        translate([DUCT_LEN-VENTURI_LEN+WALL,23,5])
+            OvalBox(
+                IN_W-2*WALL,
+                IN_H-2*WALL,
+                8);
 
-scale([1.0,0.8,1])
+        translate([DUCT_LEN+VENTURI_LEN-WALL,23,5])
+            OvalBox(
+                OUT_W-2*WALL,
+                OUT_H-2*WALL,
+                8);
 
-cylinder(
-d=7,
-h=7);
-
-translate([BracketWidth+96,34,6])
-
-scale([0.6,0.5,1])
-
-cylinder(
-d=5,
-h=5);
-
-}
+    }
 
 }
 
 module Venturi()
-{
-
-difference()
-{
-
-VenturiOuter();
-
-VenturiInner();
-
-}
-
-}
-module VenturiDuct()
 {
 
 difference()
