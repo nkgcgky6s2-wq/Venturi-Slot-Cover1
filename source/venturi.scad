@@ -69,3 +69,16 @@ VenturiInner();
 }
 
 }
+module VenturiDuct()
+{
+
+difference()
+{
+
+VenturiOuter();
+
+VenturiInner();
+
+}
+
+}
